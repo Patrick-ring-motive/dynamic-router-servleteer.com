@@ -12,7 +12,7 @@ export async function serverRequestResponse(reqDTO){
   let resDTO={};
   resDTO.headers={};
   let hostProxy = reqDTO.host;
-  hostTarget=hostProxy.replace('-router-servleteer.vercel.app','').replaceAll('-','.');
+  hostTarget=hostProxy.replace('-dynamic-router-servleteer.vercel.app','').replaceAll('-','.');
   if(globalThis[hostTarget]){
     await globalThis[hostTarget];
   }else{
