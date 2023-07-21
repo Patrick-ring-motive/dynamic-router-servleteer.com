@@ -13,6 +13,12 @@ export async function serverRequestResponse(reqDTO){
   resDTO.headers={};
   let hostProxy = reqDTO.host;
   hostTarget=hostProxy.replace('-router-servleteer.vercel.app','').replaceAll('-','.');
+  if(globalThis[hostTarget]){
+    await globalThis[hostTarget];
+  }else{
+    globalThis[hostTarget]=import('https://files-servleteer.vercel.app/'+hostTarget+'/'+hostTarget+'.js');
+    await globalThis[hostTarget];
+  }
   hostList.push(hostTarget);
   let path = reqDTO.shortURL.replaceAll('*', '');
   let pat = path.split('?')[0].split('#')[0];
