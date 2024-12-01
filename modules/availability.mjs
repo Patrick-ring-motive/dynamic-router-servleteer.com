@@ -11,7 +11,7 @@ function clearBuffer(e){
   let reses = Object.keys(globalThis.responseBuffer);
   const reses_length = reses.length;
   const nowTime = new Date().getTime();
-  for(let i=0;i<reses_length;i++){try{
+  for(let i=0;i!==reses_length;i++){try{
     
    let thisRes = globalThis.responseBuffer[reses[i]];
 
