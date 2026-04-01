@@ -1,30 +1,30 @@
-export function httpSafe(res){
+export function httpSafe(res) {
 
-  res.writeSafe=function(chunk, encoding, callback){
-    try{
-      if(!res.writableEnded){
+  res.writeSafe = function(chunk, encoding, callback) {
+    try {
+      if (!res.writableEnded) {
         return res.write(chunk, encoding, callback);
-      }else{
+      } else {
         return !res.writableEnded;
       }
-    }catch(e){
+    } catch (e) {
       console.log(e);
       return e.message;
     }
   }
 
-    res.endSafe=function(data, encoding, callback){
-    try{
-      if(!res.writableEnded){
+  res.endSafe = function(data, encoding, callback) {
+    try {
+      if (!res.writableEnded) {
         return res.end(data, encoding, callback);
-      }else{
+      } else {
         //console.log(e);
         return !res.writableEnded;
       }
-    }catch(e){
-     // console.log(e);
+    } catch (e) {
+      // console.log(e);
       return e.message;
     }
   }
-return res;
+  return res;
 }
